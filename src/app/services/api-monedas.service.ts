@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,10 @@ export class ApiMonedasService {
 
 
   logIn(username:string, password:string){
-    let params = new HttpParams();
-    params.append('username', username);
-    params.append('password', password);
+    let params = {
+      'username':username, 
+      'password':password
+    }
     return this.http.get(
       this.root.concat("collector/login"), 
       {params:params}
@@ -28,9 +29,10 @@ export class ApiMonedasService {
 
 
   getCoinsOfCollector(idCollector:string, idCollection:string){
-    let params = new HttpParams();
-    params.append('pk_collector', idCollector);
-    params.append('pk_collection', idCollection);
+    let params = {
+      'pk_collector': idCollector,
+      'pk_collection': idCollection
+    }
     return this.http.get(
       this.root.concat('collector/coins/'),
       {params:params}
@@ -38,9 +40,10 @@ export class ApiMonedasService {
   }
 
   addDeleteCoinOfCollector(idCollector:string, idCoin:string){
-    let params = new HttpParams();
-    params.append('pk_collector', idCollector);
-    params.append('pk_coin', idCoin);
+    let params = {
+      'pk_collector': idCollector,
+      'pk_coin': idCoin
+    }
     return this.http.put(
       this.root.concat('collector/'),
       {params:params}
