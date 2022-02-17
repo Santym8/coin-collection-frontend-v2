@@ -17,14 +17,14 @@ export class ApiMonedasService {
       'password':password
     }
     return this.http.get(
-      this.root.concat("collector/login"), 
+      this.root.concat("collector/login/"), 
       {params:params}
     )
   }
 
   singUp(username:string, password:string, email:string){
     let body = {'password':password, 'username':username, 'email':email}
-    return this.http.post(this.root.concat('collector/new'), body)
+    return this.http.post(this.root.concat('collector/new/'), body)
   }
 
 
