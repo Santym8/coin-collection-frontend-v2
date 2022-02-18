@@ -1,4 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Collector } from 'src/app/interfaces/collector';
 import { ApiMonedasService } from 'src/app/services/api-monedas.service';
 
@@ -12,9 +14,8 @@ export class LoginComponent implements OnInit {
   username:string;
   password:string;
 
-  user:Collector;
 
-  constructor(private api: ApiMonedasService) { }
+  constructor(private api: ApiMonedasService, private router:Router) { }
 
   ngOnInit(): void {
     
@@ -22,11 +23,21 @@ export class LoginComponent implements OnInit {
 
   public loing(){
     this.api.logIn(this.username, this.password).subscribe(
-      (user) => {this.user = user as Collector; console.log(user)},
-      () => alert("Error")
+      (user) => {
+        let collector = user as Collector;
+          if(collector.username){
+            let queryParams = {
+              'id':collector.id,
+              'username':collector.username,
+              'email':collector.email
+            }
+            this.router.navigate(['user-panel'],{queryParams: queryParams});
+          }
+          else{
+            console.log("Invalid")
+          }  
+      },
     )
-
-
   }
 
 

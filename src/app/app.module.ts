@@ -8,10 +8,15 @@ import { LoginComponent } from './components/login/login.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { Routes, RouterModule } from '@angular/router';
 import { UserPanelComponent } from './components/user-panel/user-panel.component';
+import { DisplayComponent } from './components/display/display.component';
+import { FoundPipe } from './pipes/found.pipe';
+
+import { SearchPipe } from './pipes/search.pipe';
 
 const routes : Routes = [
   {path: ''  , component: LoginComponent},
   {path: 'sing-up'  , component: NewUserComponent},
+  {path: 'user-panel'  , component: UserPanelComponent},
 ]
 
 @NgModule({
@@ -19,7 +24,10 @@ const routes : Routes = [
     AppComponent,
     LoginComponent,
     NewUserComponent,
-    UserPanelComponent
+    UserPanelComponent, 
+    DisplayComponent,
+    FoundPipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

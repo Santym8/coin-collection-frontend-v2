@@ -1,1 +1,42 @@
-<p>user-panel works!</p>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col" *ngFor="let collection of collections" id="columna">
+                <button class="botonColeccion" (click)="changeFilterCollection(collection)">{{collection.name}}</button>
+            </div>
+
+        </div>
+    </div>
+    <div id="base">
+        <div id="filtros">
+            <div class="input-group" id="buscar">
+                <input type="number" class="form-control" placeholder="Año" [(ngModel)]="filterYear">
+                <span class="input-group-btn" id="botonBuscar">
+                          <button class="btn btn-primary" type="button" (click)="filterYear='' ">X</button>
+                    </span>
+            </div>
+            <div class="container">
+                <button class="btn btn-primary" type="button" id="filtroEncontrado" (click)="changeFilterFound(-1)">Todas</button>
+            </div>
+            <div class="container">
+                <button class="btn btn-primary" type="button" id="filtroEncontrado" (click)="changeFilterFound(1)">Encontradas</button>
+            </div>
+            <div class="container">
+                <button class="btn btn-primary" type="button" id="filtroEncontrado" (click)="changeFilterFound(0)">Faltantes</button>
+            </div>
+            <div class="container">
+                <div *ngIf="collections!=null">
+                    <div id="numeroMonedas">
+                        <h3 id="monedasContador">{{numberCoinsFoud}}/{{getAmountCollection(filterCollectionId)}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contenidoPrincipalr">
+            <app-display [coins]="coins" [filterYear]="filterYear" [filterFound]="filterFound" [idCollector]="id"></app-display>
+        </div>
+
+
+    </div>
+</body>

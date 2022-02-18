@@ -28,7 +28,7 @@ export class ApiMonedasService {
   }
 
 
-  getCoinsOfCollector(idCollector:string, idCollection:string){
+  getCoinsOfCollector(idCollector:number, idCollection:number){
     let params = {
       'pk_collector': idCollector,
       'pk_collection': idCollection
@@ -39,15 +39,17 @@ export class ApiMonedasService {
     )
   }
 
-  addDeleteCoinOfCollector(idCollector:string, idCoin:string){
-    let params = {
+  addDeleteCoinOfCollector(idCollector:number, idCoin:number){
+    let body = {
       'pk_collector': idCollector,
-      'pk_coin': idCoin
+      'pk_coin': idCoin,
     }
-    return this.http.put(
-      this.root.concat('collector/'),
-      {params:params}
-    )
+    return this.http.put(this.root.concat('collector/'),{
+      body:body
+    })
+  }
 
+  getCollections(){
+    return this.http.get(this.root.concat('collections'))
   }
 }

@@ -1,0 +1,43 @@
+.contenedorPrincipal {
+    margin: auto;
+    width: 95%;
+    height: 100%;
+    overflow-y: scroll
+}
+
+#cartaMoneda {
+    float: left;
+    margin: 10px;
+    background-color: rgb(219, 219, 219);
+}
+
+#cabezera {
+    text-align: center;
+    font-size: 20px;
+    height: 100px;
+    overflow-y: hidden;
+}
+
+#monedaNumero {
+    text-align: left;
+}
+
+#agnooneda {
+    text-align: center;
+}
+
+#imagen {
+    width: 200px;
+    height: 200px;
+    margin: 10px auto;
+}
+
+#monedaMonedaBoton {
+    cursor: pointer;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+    color: white;
+    margin: 0px 10px;
+    margin: 0px auto;
+}
