@@ -27,14 +27,14 @@
             <div class="container">
                 <div *ngIf="collections!=null">
                     <div id="numeroMonedas">
-                        <h3 id="monedasContador">{{numberCoinsFoud}}/{{getAmountCollection(filterCollectionId)}}</h3>
+                        <h3 id="monedasContador">{{numberFoundCoins}}/{{getAmountCollection(filterCollectionId)}}</h3>
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="contenidoPrincipalr">
-            <app-display [coins]="coins" [filterYear]="filterYear" [filterFound]="filterFound" [idCollector]="id"></app-display>
+            <app-display [coins]="coins" [filterYear]="filterYear" [filterFound]="filterFound" [idCollector]="id" [idCollection]="filterCollectionId" (NumberFoundCoinsEvent)="setNumberFoundCoins($event)"></app-display>
         </div>
 
 

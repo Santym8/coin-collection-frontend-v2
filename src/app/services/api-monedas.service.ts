@@ -42,7 +42,7 @@ export class ApiMonedasService {
   addDeleteCoinOfCollector(idCollector:number, idCoin:number){
     let body = {
       'pk_collector': idCollector,
-      'pk_coin': idCoin,
+      'pk_coin':idCoin,          
     }
     return this.http.put(this.root.concat('collector/'),{
       body:body

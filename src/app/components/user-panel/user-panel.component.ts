@@ -5,28 +5,33 @@ import { Collection } from 'src/app/interfaces/collection';
 import { ApiMonedasService } from 'src/app/services/api-monedas.service';
 
 
+
 @Component({
   selector: 'app-user-panel',
   templateUrl: './user-panel.component.html',
   styleUrls: ['./user-panel.component.css']
 })
 export class UserPanelComponent implements OnInit {
+
+
+
   //------User----------
   id: number;
   username: string;
   email: string;
 
-
   //-----------Contorl Panel
-  numberCoinsFoud: number = 0;
-  collections: Collection[];
-  coins: Coin[];
+  numberFoundCoins:number = 0;
+  collections: Collection[] = [];
+  coins: Coin[] = [];
 
   //--------Filters------------
   filterCollectionId: number = 1;
   filterYear: string = "";
   filterFound: number = -1;
 
+  //-------------Child Component-----------------
+ 
   constructor(private route: ActivatedRoute, private api: ApiMonedasService) { }
 
   ngOnInit(): void {
@@ -36,7 +41,6 @@ export class UserPanelComponent implements OnInit {
     this.email = queryParams['email'];
     this.getCollections();
     this.getCoinsCollection();
-
   }
 
 
@@ -50,6 +54,7 @@ export class UserPanelComponent implements OnInit {
     this.filterFound = status;
   }
 
+  //---------Counters-------------
   public getAmountCollection(idCollection: number): number {
     for (let i = 0; i < this.collections.length; i++) {
       if (this.collections[i].id == idCollection) {
@@ -57,6 +62,10 @@ export class UserPanelComponent implements OnInit {
       }
     }
     return 0;
+  }
+
+  public setNumberFoundCoins(num:number){
+   this.numberFoundCoins = num;
   }
 
 
@@ -69,15 +78,15 @@ export class UserPanelComponent implements OnInit {
     );
   }
 
-  private getCoinsCollection(){
+  private getCoinsCollection() {
     this.api.getCoinsOfCollector(this.id, this.filterCollectionId).subscribe(
-      (coins) => {this.coins = coins as Coin[]; console.log(this.coins)}
+      (coins) => { this.coins = coins as Coin[]; }
 
     )
   }
 
-  
-  
+
+
 
 
 

@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #17a2b8;
+    background-color: #b5bdbe;
     height: 100vh;
 }
 
@@ -9,9 +9,7 @@ body {
     width: 100%;
     height: 50px;
     margin-top: 30px;
-    background-color: rgb(219, 219, 219);
     font-size: 100%;
-    border: solid white;
     border-radius: 20px;
 }
 
@@ -22,7 +20,7 @@ body {
 #base {
     margin: 30px auto;
     display: flex;
-    height: 600px;
+    height: 80%;
 }
 
 #filtros {

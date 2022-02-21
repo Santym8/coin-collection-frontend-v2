@@ -1,4 +1,6 @@
+{{sendNumberFoundCoins()}}
 <div class="contenedorPrincipal">
+
     <div *ngFor="let coin of coins |found:filterFound |search:filterYear" class="card" style="width: 17rem;" id="cartaMoneda">
         <div class="card-header" id="cabezera">
             <p class="card-text" id="monedaNumero">#{{coin.coin_number}}</p>
@@ -10,7 +12,7 @@
 
 
             <div id="monedaMonedaBoton">
-                <div *ngIf="coin.found; else monedaNoEncontrada" style="background-color: rgb(51, 134, 30);" (click)="addDeleteCoin(coin.id)">
+                <div *ngIf="coin.found; else monedaNoEncontrada" style="background-color: rgb(51, 134, 30);" (click)="addDeleteCoin(coin.id);">
                     Encontrada
                 </div>
                 <ng-template #monedaNoEncontrada>
