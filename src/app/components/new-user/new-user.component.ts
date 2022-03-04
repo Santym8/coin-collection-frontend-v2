@@ -32,16 +32,14 @@ export class NewUserComponent implements OnInit {
       this.api.singUp(this.username, this.password, this.email).subscribe(
         (user) => {
           let collector = user as Collector;
-          if (collector.username) {
+          if (collector.token) {
             let queryParams = {
-              'id': collector._id,
-              'username': collector.username,
-              'email': collector.email
+              'token':collector.token
             }
             this.router.navigate(['user-panel'], { queryParams: queryParams });
           }
           else {
-            console.log("Invalid")
+            window.alert("Datos Invalidos")
           }
         }
       )

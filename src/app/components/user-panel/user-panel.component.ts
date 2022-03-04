@@ -16,9 +16,8 @@ export class UserPanelComponent implements OnInit {
 
 
   //------User----------
-  id: string;
-  username: string;
-  email: string;
+  token: string;
+ 
 
   //-----------Contorl Panel
   numberFoundCoins:number = 0;
@@ -36,9 +35,7 @@ export class UserPanelComponent implements OnInit {
 
   ngOnInit(): void {
     let queryParams = this.route.snapshot.queryParams;
-    this.id = queryParams['id'];
-    this.username = queryParams['username'];
-    this.email = queryParams['email'];
+    this.token = queryParams['token'];
     this.getCollections();
     this.getCoinsCollection();
   }
@@ -71,7 +68,7 @@ export class UserPanelComponent implements OnInit {
 
   //--------------BBDD--------------
   private getCollections() {
-    this.api.getCollections().subscribe(
+    this.api.getCollections(this.token).subscribe(
       (collections) => {
         this.collections = collections as Collection[];
       }
@@ -79,7 +76,7 @@ export class UserPanelComponent implements OnInit {
   }
 
   private getCoinsCollection() {
-    this.api.getCoinsOfCollector(this.id, this.filterCollectionId).subscribe(
+    this.api.getCoinsOfCollector(this.token, this.filterCollectionId).subscribe(
       (coins) => { this.coins = coins as Coin[]; }
 
     )
