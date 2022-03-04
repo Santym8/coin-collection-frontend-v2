@@ -16,7 +16,7 @@ export class UserPanelComponent implements OnInit {
 
 
   //------User----------
-  id: number;
+  id: string;
   username: string;
   email: string;
 
@@ -26,7 +26,7 @@ export class UserPanelComponent implements OnInit {
   coins: Coin[] = [];
 
   //--------Filters------------
-  filterCollectionId: number = 1;
+  filterCollectionId: string = "";
   filterYear: string = "";
   filterFound: number = -1;
 
@@ -46,7 +46,7 @@ export class UserPanelComponent implements OnInit {
 
   //-------------Filters-----------------
   public changeFilterCollection(collection: Collection) {
-    this.filterCollectionId = collection.id;
+    this.filterCollectionId = collection._id;
     this.getCoinsCollection();
   }
 
@@ -55,9 +55,9 @@ export class UserPanelComponent implements OnInit {
   }
 
   //---------Counters-------------
-  public getAmountCollection(idCollection: number): number {
+  public getAmountCollection(idCollection: string): number {
     for (let i = 0; i < this.collections.length; i++) {
-      if (this.collections[i].id == idCollection) {
+      if (this.collections[i]._id == idCollection) {
         return this.collections[i].amount;
       }
     }

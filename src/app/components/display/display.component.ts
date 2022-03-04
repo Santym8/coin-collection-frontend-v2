@@ -11,9 +11,9 @@ import { ApiMonedasService } from 'src/app/services/api-monedas.service';
   styleUrls: ['./display.component.css']
 })
 export class DisplayComponent implements OnInit {
-  @Input() idCollector: number;
+  @Input() idCollector: string;
   @Input() coins: Coin[] = [];
-  @Input() idCollection: number;
+  @Input() idCollection: string;
   @Input() filterYear:string;
   @Input() filterFound:number;
 
@@ -26,7 +26,7 @@ export class DisplayComponent implements OnInit {
     
   }
 
-  addDeleteCoin(idCoin:number){
+  addDeleteCoin(idCoin:string){
     this.api.addDeleteCoinOfCollector(this.idCollector, idCoin).subscribe(
       () => this.getCoinsCollection()
      )

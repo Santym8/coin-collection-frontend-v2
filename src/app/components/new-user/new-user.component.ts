@@ -34,7 +34,7 @@ export class NewUserComponent implements OnInit {
           let collector = user as Collector;
           if (collector.username) {
             let queryParams = {
-              'id': collector.id,
+              'id': collector._id,
               'username': collector.username,
               'email': collector.email
             }
