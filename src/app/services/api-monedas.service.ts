@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiMonedasService {
 
-  private root = "http://127.0.0.1:3000/api"
+  private root = "https://api-coins-collection.herokuapp.com/api"
 
   constructor(public http: HttpClient) { }
 
