@@ -25,16 +25,14 @@ export class LoginComponent implements OnInit {
     this.api.logIn(this.username, this.password).subscribe(
       (user) => {
         let collector = user as Collector;
-          if(collector.username){
+          if(collector.token){
             let queryParams = {
-              'id':collector.id,
-              'username':collector.username,
-              'email':collector.email
+              'token':collector.token
             }
             this.router.navigate(['user-panel'],{queryParams: queryParams});
           }
           else{
-            console.log("Invalid")
+            window.alert("Datos Incorrectos")
           }  
       },
     )

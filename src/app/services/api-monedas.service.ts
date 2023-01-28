@@ -1,55 +1,61 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiMonedasService {
 
-  private root = "http://127.0.0.1:8000/api/"
+  private root = "https://api-coins-collection.herokuapp.com/api"
 
   constructor(public http: HttpClient) { }
 
 
-  logIn(username:string, password:string){
+  logIn(username: string, password: string) {
     let params = {
-      'username':username, 
-      'password':password
+      'username': username,
+      'password': password
     }
     return this.http.get(
-      this.root.concat("collector/login/"), 
-      {params:params}
+      this.root.concat("/user/"),
+      { params: params }
     )
   }
 
-  singUp(username:string, password:string, email:string){
-    let body = {'password':password, 'username':username, 'email':email}
-    return this.http.post(this.root.concat('collector/new/'), body)
+  singUp(username: string, password: string, email: string) {
+    let body = { 'password': password, 'username': username, 'email': email }
+    return this.http.post(this.root.concat('/user/create'), body)
   }
 
 
-  getCoinsOfCollector(idCollector:number, idCollection:number){
+  getCoinsOfCollector(token: string, idCollection: string) {
     let params = {
-      'pk_collector': idCollector,
-      'pk_collection': idCollection
+      'idCollection': idCollection
     }
+    let headers = {
+      "x-access-token": token
+    }
+
     return this.http.get(
-      this.root.concat('collector/coins/'),
-      {params:params}
+      this.root.concat('/coin/coins_of_collector'),
+      { params: params, headers: headers }
     )
   }
 
-  addDeleteCoinOfCollector(idCollector:number, idCoin:number){
+  addDeleteCoinOfCollector(token: string, idCoin: string) {
     let body = {
-      'pk_collector': idCollector,
-      'pk_coin':idCoin,          
+      'idCoin': idCoin,
     }
-    return this.http.put(this.root.concat('collector/'),{
-      body:body
-    })
+    let headers = {
+      "x-access-token": token
+    }
+    return this.http.put(this.root.concat('/coin/add_delete'), body, { headers: headers })
   }
 
-  getCollections(){
-    return this.http.get(this.root.concat('collections'))
+  getCollections(token: string) {
+    let headers = {
+      "x-access-token": token
+    }
+    return this.http.get(this.root.concat('/coin/programs'), { headers: headers })
   }
 }

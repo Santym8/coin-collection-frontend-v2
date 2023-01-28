@@ -1,7 +1,7 @@
 export interface Coin {
-    id:number;
-    id_collection:number;
-    coin_number:number;
+    _id:string;
+    program:string;
+    coinNumber:number;
     name:string;
     year:number;
     image:string;
