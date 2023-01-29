@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiMonedasService {
 
-  private root = "https://api-coins-collection.herokuapp.com/api"
+  // private root = "http://localhost:3000/api"
+  private root = "https://api-coin-collection.onrender.com/api"
 
   constructor(public http: HttpClient) { }
 
@@ -17,7 +18,7 @@ export class ApiMonedasService {
       'password': password
     }
     return this.http.get(
-      this.root.concat("/user/"),
+      this.root.concat("/user"),
       { params: params }
     )
   }
